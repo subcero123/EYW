@@ -1,0 +1,304 @@
+/*!
+    Theme Name: Starter theme
+    Theme URI: pending
+    Description: Starter theme great
+    Version: 1.0.0
+    Author: Armando Niño
+    Author URI: pending
+    Tags: Gulp
+
+    License: MIT
+    License URI: http://opensource.org/licenses/mit-license.php
+*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Itim");
+@import "reset";
+@import "variables";
+@import "mixins";
+@import "base";
+@import "layout/layout";
+@import "modules";
+
+// Estilos para el navbar
+.navbar {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  color: #fff;
+
+  .logo {
+    position: absolute;
+    left: 10px; /* Ajusta la distancia desde el borde izquierdo según tus necesidades */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 78px; /* Ajusta la altura del logo según tus necesidades */
+      width: 70px;
+      /* Otros estilos para el logo */
+    }
+  }
+
+  .menu-item {
+    margin-left: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    i {
+      margin-right: 5px;
+    }
+  }
+}
+
+.l-adventure-element {
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  padding: 20px;
+  background-image: url("assets/images/glacial_background.jpg");
+  background-size: cover;
+  background-position: center;
+
+  .m-title {
+    font-weight: 999; /* Grosor muy grueso */
+    color: white; /* Color blanco */
+    font-size: 70px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+    span {
+      color: transparent;
+      -webkit-text-stroke: 1px white;
+    }
+  }
+
+  .m-search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background-color: white;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    &__icon {
+      margin-right: 10px;
+      margin-left: 5px;
+      color: gray;
+    }
+
+    &__input {
+      padding: 10px;
+      border: 0px solid #ccc;
+      flex-grow: 1;
+    }
+
+    &__text {
+      display: flex;
+      align-items: center; /* Centra verticalmente */
+      justify-content: center; /* Centra horizontalmente */
+      color: white;
+      font-weight: 999;
+      margin-left: 10px;
+      background-color: red;
+      cursor: pointer;
+      height: 40px;
+      width: 150px;
+    }
+  }
+
+  .m-categories {
+    margin-top: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .m-category {
+      color: white;
+      margin: 10px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      border: 1px solid white;
+      background-color: transparent;
+
+      cursor: pointer;
+
+      i {
+        margin-right: 5px;
+      }
+
+      &.--selected {
+        background-color: white;
+        color: black;
+
+        i {
+            margin-right: 5px;
+            color: red;
+        }
+      }
+    }
+  }
+}
+
+.l-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  /* Agrega otros estilos según sea necesario */
+}
+
+.l-section {
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  display: flex;
+  align-items: center;
+}
+
+.m-wild-trips {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .m-text {
+    margin-right: 10px;
+    font-weight: 950;
+    font-size: 30px;
+    margin-right: 20px;
+    /* Estilos para el texto WILD TRIPS */
+  }
+
+  .m-see-all {
+    /* Estilos para el botón SEE ALL */
+    background-color: white;
+    border: 2.5px solid red;
+    color: red;
+    font-weight: 600;
+    width: 80px;
+    height: 35px;
+  }
+
+  
+}
+
+.m-navigation-controls {
+  display: flex;
+
+  .m-arrow-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+    i {
+      color: black;
+      /* Ajusta los estilos del icono según sea necesario */
+    }
+
+    &--right{
+      background-color: red;
+
+      i{
+        color: white;
+      }
+    }
+  }
+}
+
+.m-slider-item {
+  margin: 0 4%; /* Ajusta el margen entre los elementos según sea necesario */
+  box-sizing: border-box;
+}
+
+.m-slider-overlay {
+  margin-left: 10%;
+  background-color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; /* Bordes redondeados */
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+
+.corner-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.circle-icon,
+.star-icon {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.m-slider-overlay img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0; /* Bordes redondeados solo en la esquina superior del contenedor */
+}
+
+.m-slider-text {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  flex: 1;
+  padding: 0 10px; /* Ajusta el espacio entre columnas según sea necesario */
+}
+
+.align-right {
+  text-align: right;
+}
+
+.bold-text {
+  font-weight: bolder;
+  font-size: 25px;
+  color: black; /* Puedes ajustar el color según sea necesario */
+}
+
+.gray-text {
+  color: gray;
+  font-weight: bold;
+}
+
+.black-text {
+  color: black;
+}
+
+.red-text {
+  color: red;
+  font-size: 12px;
+}
+
+
