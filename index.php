@@ -34,6 +34,43 @@
 
 	</div>
   <ul class="slides">
+  <?php
+		$args = array(
+			'post_type' => 'product',
+		);
+		$the_query = new WP_Query($args);
+		while ($the_query->have_posts()) {
+			$the_query->the_post();
+			?>
+			<li>
+				<div class="m-slider-item">
+					<div class="m-slider-overlay">
+					<div class="corner-icons">
+							<div class="circle-icon">5<b style="color: #fcc200;">&#9733</b></div>
+						</div>
+						<img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="Slider Image">
+						<div class="corner-container">
+							<div class="circle-container"><b style="color: #fcc200;">$</b> 450</div>
+						</div>
+						<div class="m-slider-text">
+							<div class="column">
+								<p class="bold-text"><?php echo get_the_title()?></p>
+								<p class="gray-text">Transport: <b class="black-text">Quad bike <i class="fa-solid fa-motorcycle red-text"></i></b></p>
+								<p class="gray-text">Distance: <b class="black-text">27 km</b></p>
+							</div>
+							<div class="column align-right">
+								<p class="gray-text">Person: <b style="color:black;"> 2</b></p>
+								<p class="gray-text">Max speed:</p>
+								<p style="font-size: 20px">80-90 <b style="color: red; font-size: 15px;">km/h</b></p>
+							</div>
+						</div>
+					</div>
+				</div>
+    		</li>
+	<?php			
+		}
+	?>
+	<!--
     <li>
       <div class="m-slider-item">
         <div class="m-slider-overlay">
@@ -184,6 +221,7 @@
         </div>
       </div>
     </li>
+	-->
   </ul>
 </div>
 </div>
@@ -707,6 +745,5 @@
 		<button class="m-button">TO BEGIN</button>
 	</div>
 </div>
-
 
 <?php get_footer() ?>
