@@ -119,3 +119,12 @@ for content that is going to be absolute centered both in X and Y
 		transform: translate(-50%, -50%);
 	}
 }
+
+@font-face {
+    font-family: 'cedorabold';
+    src: url('assets/fonts/cedora-font/cedora-boldstd-webfont.woff2') format('woff2'),
+         url('assets/fonts/cedora-font/cedora-boldstd-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

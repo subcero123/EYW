@@ -26,7 +26,7 @@
     <div class="menu-item">About Us</div>
     <div class="menu-item">Search</div>
     <div class="menu-item">Routes</div>
-    <div class="menu-item"><i class="fas fa-bars"></i></div>
+    <div class="menu-item menu-expanded"><i class="fas fa-bars"></i></div>
   </div>
 	
 	<div class="m-title">
