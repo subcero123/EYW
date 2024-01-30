@@ -6,6 +6,12 @@
 
 ?>
 <?php get_header() ?>
+<?php
+	    $taxonomy = get_field("categorias", "options");
+		echo "hola";
+		echo $taxonomy;
+		
+?>
 
 <div class="l-container">
   <div class="l-section">
@@ -33,10 +39,18 @@
 	<div id="js-mobile-indicator-1" class="mobile-indicator">
 
 	</div>
-  <ul class="slides">
+  <ul class="slides">	
   <?php
+	    $taxonomy = get_field("categorias", "options");
 		$args = array(
 			'post_type' => 'product',
+			'tax_query' => array(
+				array(
+				'taxonomy' => 'product_cat',
+				'field' => 'term_id',
+				'terms' => $taxonomy
+				 )
+				)
 		);
 		$the_query = new WP_Query($args);
 		while ($the_query->have_posts()) {
