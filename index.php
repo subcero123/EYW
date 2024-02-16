@@ -5,7 +5,67 @@
  */
 
 ?>
+<div class="l-adventure-element">
 <?php get_header() ?>
+	
+<div class="m-title">
+	  EXPAND YOUR <span data-text="WORLD">WORLD</span>
+</div>
+<div class="m-search-bar">
+	
+	<!--
+	<div class="m-search-bar__icon"><i class="fa fa-search"></i></div>
+	<input type="text" placeholder="Find your adventure" class="m-search-bar__input">
+	<div class="m-search-bar__text">SEARCH</div>
+	-->
+	<?php
+
+		echo get_search_form();
+	?>
+	
+</div>
+<div class="m-categories">
+	<?php
+		$taxonomy = 'product_cat';
+		$orderby = 'name';
+		$show_count = 0;  // 1 for yes, 0 for no
+		$pad_counts = 0;  // 1 for yes, 0 for no
+		$hierarchical = 1;  // 1 for yes, 0 for no
+		$title = '';
+		$empty = 0;
+
+		$args = array(
+			'taxonomy' => $taxonomy,
+			'orderby' => $orderby,
+			'show_count' => $show_count,
+			'pad_counts' => $pad_counts,
+			'hierarchical' => $hierarchical,
+			'title_li' => $title,
+			'hide_empty' => $empty
+		);
+
+		$all_categories = get_categories( $args );
+		//var_dump($all_categories);
+		foreach ($all_categories as $cat) {
+			?>
+			 <a href="<?php echo get_term_link($cat->slug, 'product_cat')?>"><button class="m-category"><i class="fa fa-hotel"></i><?php echo $cat->name;?></button></a> 
+			<?php
+		}
+	?>
+	
+	<!--
+	<button class="m-category --selected"><i class="fa fa-hotel"></i> Hotels</button>
+	<button class="m-category --selected"><i class="fa fa-hotel"></i> Hotels</button>
+	<button class="m-category"><i class="fa fa-binoculars"></i> Tours</button>
+	<button class="m-category"><i class="fa fa-plane"></i> Flights</button>
+	<button class="m-category"><i class="fa fa-map"></i> Excursions</button>
+	<button class="m-category"><i class="fa fa-bicycle"></i> Bike Travel</button>
+	<button class="m-category"><i class="fa fa-tent"></i> Camping</button>
+	<button class="m-category"><i class="fa fa-sun"></i> One-day</button>
+	-->
+</div>
+</div>
+
 <?php
 	    $taxonomy = get_field("categorias", "options");
 		echo "hola";
@@ -41,16 +101,10 @@
 	</div>
   <ul class="slides">	
   <?php
-	    $taxonomy = get_field("categorias", "options");
+	    $taxonomy = get_field("categorias-relationship", "options");
 		$args = array(
 			'post_type' => 'product',
-			'tax_query' => array(
-				array(
-				'taxonomy' => 'product_cat',
-				'field' => 'term_id',
-				'terms' => $taxonomy
-				 )
-				)
+			'post__in'=> $taxonomy,
 		);
 		$the_query = new WP_Query($args);
 		while ($the_query->have_posts()) {
@@ -62,7 +116,7 @@
 					<div class="corner-icons">
 							<div class="circle-icon">5<b style="color: #fcc200;">&#9733</b></div>
 						</div>
-						<img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="Slider Image">
+						<a href="<?php echo get_the_permalink();?>"><img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" alt="Slider Image"></a>
 						<div class="corner-container">
 							<div class="circle-container"><b style="color: #fcc200;">$</b> 450</div>
 						</div>
