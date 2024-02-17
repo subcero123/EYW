@@ -229,7 +229,7 @@ jQuery(function ($) {
 
   $(document.body).on("refrescarFragmentos", function (e) {
     var $fragment_refresh = {
-      url: wc_add_to_cart_params.wc_ajax_url
+      url: woocommerce_params.wc_ajax_url
         .toString()
         .replace("%%endpoint%%", "get_refreshed_fragments"),
       type: "POST",
@@ -238,25 +238,11 @@ jQuery(function ($) {
       },
       timeout: wc_add_to_cart_params.request_timeout,
       success: function (data) {
-        if (data && data.fragments) {
-          $.each(data.fragments, function (key, value) {
-            $(key).replaceWith(value);
-          });
-
-          if (true) {
-            sessionStorage.setItem(
-              wc_add_to_cart_params.fragment_name,
-              JSON.stringify(data.fragments)
-            );
-            set_cart_hash(data.cart_hash);
-
-            if (data.cart_hash) {
-              set_cart_creation_timestamp();
-            }
-          }
-
-          $(document.body).trigger("wc_fragments_refreshed");
-        }
+          console.log(data);
+          var mini_cart_wrapper = $('.widget_shopping_cart_content');
+          var parent = mini_cart_wrapper.parent();
+          mini_cart_wrapper.remove();
+          parent.append(data.fragments['div.widget_shopping_cart_content']);
       },
       error: function () {
         $(document.body).trigger("wc_fragments_ajax_error");
